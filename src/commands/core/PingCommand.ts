@@ -7,10 +7,10 @@ export default class PingCommand implements CommandMeta {
     readonly description = "Play ping ? pong !";
     readonly guildOnly = true;
     constructor(private client: MusicBot) {}
-    public execute(message: Message, args: string[]) {
+    public execute(message: Message) {
         const embed = new MessageEmbed()
         .setColor('RANDOM')
-        .setThumbnail(this.client.util.getGuildIcon(message.guild!.id) as string)
+        .setThumbnail(this.client.user!.displayAvatarURL())
         .setDescription(`:ping_pong: Pong! ${this.client.ws.ping}ms`)
         .setTimestamp();
         message.channel.send(embed);

@@ -10,6 +10,7 @@ export default class CommandHandler {
         const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command)!);
         if (cmd!.guildOnly && message.channel.type === "dm") return;
         if (cmd!.ownerOnly && !this.client.config.owners.includes(message.author.id)) return message.reply("Only developers can execute this command!");
+        if (cmd!.maintenance && !this.client.config.owners.includes(message.author.id)) return message.reply("Maintenance.");
         cmd!.execute(message, args);
         if (!cmd) return;
     }

@@ -19,5 +19,5 @@ export interface CommandMeta {
     ownerOnly?: boolean;
     guildOnly?: boolean;
     maintenance?: boolean;
-    execute(message: Message, args: string[]): any;
+    execute(message: Message, args?: string[]): any;
 }
